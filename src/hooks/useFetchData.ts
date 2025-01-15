@@ -9,9 +9,13 @@ export function useFetchData<T>(initial:T, token:string = ""){
 
     async function fetchData(endpoint: string) {
 
-        let config = {
+        let config = {};
+
+        if(token){
+          config= {
             headers: { authorization: `Bearer ${token}` },
-        };
+          };
+        }
 
         setLoading(true);
         try {
